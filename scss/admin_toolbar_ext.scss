@@ -1,0 +1,30 @@
+$color: #000;
+$color-0: lighten($color, 10);
+$color-1: lighten($color, 15);
+$color-2: lighten($color, 20);
+$color-3: lighten($color, 25);
+$color-4: lighten($color, 50);
+
+
+.toolbar {
+  .toolbar-menu-administration {
+    .menu-level-0 > .toolbar-menu,
+    .menu-level-0 > .toolbar-menu > .menu-item--expanded {
+      background-color: $color-0;
+    }
+
+    .menu-level-1 > .toolbar-menu,
+    .menu-level-1 > .toolbar-menu  > .menu-item--expanded
+    {
+      background-color: $color-1;
+    }
+
+    .menu-level-2 > .toolbar-menu {
+      background-color: $color-2;
+    }
+
+    .menu-level-3 > .toolbar-menu {
+      background-color: $color-3;
+    }
+  }
+}
