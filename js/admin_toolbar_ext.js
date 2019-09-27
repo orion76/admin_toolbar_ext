@@ -9,7 +9,7 @@
   };
 
 
-  function onWheel(ul, move_value, duration) {
+  function onMouseWheel(ul, move_value, duration) {
 
     let placeStart = null;
 
@@ -30,12 +30,22 @@
 
       } else {
         const hiddenBottom = windowHeight - bounding.bottom;
-        if (hiddenBottom < 0) {
+        if (hiddenBottom <= 0 - move_value) {
           moveBottom(ul, move_value, duration);
         }
       }
       event.stopPropagation();
       event.preventDefault();
+    }
+  }
+
+  function onMouseOut(ul) {
+    return function (event) {
+
+      const bounding = ul.get(0).getBoundingClientRect();
+      if (event.offsetX < 0) {
+        ul.css('top', 'auto');
+      }
     }
   }
 
@@ -53,7 +63,8 @@
         const ul = $(this);
 
         ul.on({
-          wheel: onWheel(ul, move_value, duration)
+          wheel: onMouseWheel(ul, move_value, duration),
+          mouseout: onMouseOut(ul)
         });
       });
 
